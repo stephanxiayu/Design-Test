@@ -9,6 +9,8 @@ class Design extends StatefulWidget {
   final double width1;
   final IconData iconData;
   final double iconSize;
+  final String title;
+  final double fontSize;
 
   const Design(
       {Key key,
@@ -19,7 +21,12 @@ class Design extends StatefulWidget {
       this.width1,
       this.offsetB,
       this.iconData,
-      this.iconSize})
+      this.iconSize,
+      this.title,
+      this.fontSize,
+   
+      
+      })
       : super(key: key);
   @override
   _DesignState createState() => _DesignState();
@@ -46,7 +53,8 @@ class _DesignState extends State<Design> {
       onPointerUp: onPressedUp,
       onPointerDown: onPressedDown,
       child: isPressed
-          ? Container(
+          ? Container( 
+            
               height: widget.height1,
               width: widget.width1,
               decoration: BoxDecoration(
@@ -84,11 +92,17 @@ class _DesignState extends State<Design> {
                                 offset: widget.offsetB,
                                 color: Colors.black.withOpacity(.25))
                           ]),
-                      child: Icon(
+                      child: 
+                        Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children:[ Icon(
                         widget.iconData,
                         size: widget.iconSize,
-                        color: Colors.blue,
-                      ),
+                        color: Colors.red,),SizedBox(width: 5,),Center(
+                            child: Text(widget.title,style: TextStyle(fontSize: 20, color:Colors.red),
+                       
+                            ),
+                          ),
+                                                   ] ),
                     ),
                   ),
                 ),
@@ -110,11 +124,17 @@ class _DesignState extends State<Design> {
                         offset: Offset(3, 3),
                         color: Colors.black.withOpacity(.15))
                   ]),
-              child: Icon(
-                widget.iconData,
-                color: Colors.black.withOpacity(.5),
-                size: 30.0,
-              ),
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                
+                                Icon(
+                        widget.iconData,
+                        size: widget.iconSize,
+                        color: Colors.black,),SizedBox(width: 5,),Center(
+                  child: Text(widget.title,style: TextStyle(fontSize: 20, color:Colors.black.withOpacity(.5),),),
+                ),
+                                ]  ),
+                                 
             ),
     );
   }
